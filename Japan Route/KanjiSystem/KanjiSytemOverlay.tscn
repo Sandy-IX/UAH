@@ -1,21 +1,16 @@
 [gd_scene format=3 uid="uid://b1fnxombiaiqs"]
 
 [ext_resource type="Script" uid="uid://bqkggu4lyy7qp" path="res://Japan Route/KanjiSystem/kanji_sytem_overlay.gd" id="1_h67tg"]
+[ext_resource type="FontFile" uid="uid://br0ad8wxxnxbs" path="res://Japan Route/KanjiSystem/Tetsubin Gothic.otf" id="2_k62d3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_skta8"]
-radius = 40.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h67tg"]
-radius = 40.0
+radius = 72.1734
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k62d3"]
-radius = 40.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_12t3c"]
-radius = 40.0
+radius = 68.0294
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hkadb"]
-radius = 40.0
+radius = 66.27216
 
 [node name="KanjiSytemOverlay" type="CanvasLayer" unique_id=807449397]
 layer = 15
@@ -32,13 +27,14 @@ color = Color(0, 0, 0, 0.5882353)
 
 [node name="Label" type="Label" parent="." unique_id=1165159895]
 modulate = Color(1, 1, 1, 0.3)
-offset_left = 567.0
-offset_top = -12.0
-offset_right = 1335.0
-offset_bottom = 1042.0
+offset_left = 561.0
+offset_top = 164.0
+offset_right = 1329.0
+offset_bottom = 1218.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 10
 theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_k62d3")
 theme_override_font_sizes/font_size = 768
 text = "嵐"
 
@@ -56,111 +52,54 @@ position = Vector2(940, 520)
 position = Vector2(-936, -458)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D" unique_id=590070307]
-<<<<<<< Updated upstream
-position = Vector2(699, 238)
-=======
-position = Vector2(788, 241)
->>>>>>> Stashed changes
+position = Vector2(676, 219)
 shape = SubResource("CircleShape2D_skta8")
-
-[node name="Area2D2" type="Area2D" parent="Strokes" unique_id=1247139382]
-position = Vector2(-36, -197)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D2" unique_id=2040057824]
-position = Vector2(37, -32)
-shape = SubResource("CircleShape2D_h67tg")
 
 [node name="Area2D3" type="Area2D" parent="Strokes" unique_id=2088977607]
 position = Vector2(248, -223)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D3" unique_id=1886744974]
-<<<<<<< Updated upstream
-=======
-position = Vector2(-89, 4)
->>>>>>> Stashed changes
+position = Vector2(11, -4)
 shape = SubResource("CircleShape2D_k62d3")
-
-[node name="Area2D4" type="Area2D" parent="Strokes" unique_id=1941036851]
-position = Vector2(38, -79)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D4" unique_id=532653198]
-position = Vector2(-299, 307)
-shape = SubResource("CircleShape2D_12t3c")
 
 [node name="Area2D5" type="Area2D" parent="Strokes" unique_id=1868579786]
 position = Vector2(-222, 299)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D5" unique_id=1606863196]
-<<<<<<< Updated upstream
-position = Vector2(67, -418)
-shape = SubResource("CircleShape2D_hkadb")
-
-[node name="Area2D6" type="Area2D" parent="Strokes" unique_id=787606015]
-position = Vector2(71, 293)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D6" unique_id=93801389]
-position = Vector2(67, -418)
-=======
-position = Vector2(105, -394)
->>>>>>> Stashed changes
+position = Vector2(7, -380)
 shape = SubResource("CircleShape2D_hkadb")
 
 [node name="Area2D7" type="Area2D" parent="Strokes" unique_id=929512837]
 position = Vector2(186, 656)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D7" unique_id=345938646]
-position = Vector2(67, -418)
-shape = SubResource("CircleShape2D_hkadb")
-
-[node name="Area2D8" type="Area2D" parent="Strokes" unique_id=1512291812]
-position = Vector2(-65, 442)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D8" unique_id=1397689640]
-position = Vector2(67, -418)
+position = Vector2(95, -343)
 shape = SubResource("CircleShape2D_hkadb")
 
 [node name="Area2D9" type="Area2D" parent="Strokes" unique_id=1187948122]
 position = Vector2(6, 379)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D9" unique_id=675267300]
-<<<<<<< Updated upstream
-position = Vector2(67, -418)
-=======
-position = Vector2(-19, -360)
->>>>>>> Stashed changes
+position = Vector2(-7, -380)
 shape = SubResource("CircleShape2D_hkadb")
 
 [node name="Area2D10" type="Area2D" parent="Strokes" unique_id=1978381215]
 position = Vector2(-169, 589)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D10" unique_id=947353069]
-position = Vector2(67, -418)
+position = Vector2(63, -435)
 shape = SubResource("CircleShape2D_hkadb")
 
 [node name="Area2D11" type="Area2D" parent="Strokes" unique_id=354826356]
 position = Vector2(57, 525)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D11" unique_id=1284120716]
-position = Vector2(67, -418)
-shape = SubResource("CircleShape2D_hkadb")
-
-[node name="Area2D12" type="Area2D" parent="Strokes" unique_id=1052353657]
-position = Vector2(-64, 606)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D12" unique_id=595642068]
-position = Vector2(67, -418)
+position = Vector2(75, -386)
 shape = SubResource("CircleShape2D_hkadb")
 
 [node name="Area2D13" type="Area2D" parent="Strokes" unique_id=1914741314]
 position = Vector2(42, 700)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D13" unique_id=1323576324]
-position = Vector2(67, -418)
-shape = SubResource("CircleShape2D_hkadb")
-
-[node name="Area2D14" type="Area2D" parent="Strokes" unique_id=327824401]
-position = Vector2(-162, 723)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D14" unique_id=608241496]
-position = Vector2(67, -418)
+position = Vector2(-28, -382)
 shape = SubResource("CircleShape2D_hkadb")

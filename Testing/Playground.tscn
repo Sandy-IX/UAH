@@ -36,7 +36,7 @@ shape = SubResource("RectangleShape2D_2msf0")
 one_way_collision = true
 
 [node name="Player" parent="." unique_id=1711489228 instance=ExtResource("1_n8k30")]
-position = Vector2(198, 2)
+position = Vector2(74, -6)
 
 [node name="Barrel" parent="." unique_id=1949679277 instance=ExtResource("2_2msf0")]
 position = Vector2(529, 0)
