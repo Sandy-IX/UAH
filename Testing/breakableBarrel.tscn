@@ -125,9 +125,9 @@ scale = Vector2(3.96875, 3.9375)
 sprite_frames = SubResource("SpriteFrames_ojbqj")
 animation = &"Destroy"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2142666414]
+[node name="Area2D" type="Area2D" parent="." unique_id=2142666414 groups=["BreakableObjects"]]
 collision_layer = 32
-collision_mask = 4
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1602008967]
 position = Vector2(2, -44)

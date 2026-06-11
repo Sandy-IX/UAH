@@ -56,7 +56,11 @@ position = Vector2(940, 520)
 position = Vector2(-936, -458)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D" unique_id=590070307]
+<<<<<<< Updated upstream
 position = Vector2(699, 238)
+=======
+position = Vector2(788, 241)
+>>>>>>> Stashed changes
 shape = SubResource("CircleShape2D_skta8")
 
 [node name="Area2D2" type="Area2D" parent="Strokes" unique_id=1247139382]
@@ -70,6 +74,10 @@ shape = SubResource("CircleShape2D_h67tg")
 position = Vector2(248, -223)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D3" unique_id=1886744974]
+<<<<<<< Updated upstream
+=======
+position = Vector2(-89, 4)
+>>>>>>> Stashed changes
 shape = SubResource("CircleShape2D_k62d3")
 
 [node name="Area2D4" type="Area2D" parent="Strokes" unique_id=1941036851]
@@ -83,6 +91,7 @@ shape = SubResource("CircleShape2D_12t3c")
 position = Vector2(-222, 299)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D5" unique_id=1606863196]
+<<<<<<< Updated upstream
 position = Vector2(67, -418)
 shape = SubResource("CircleShape2D_hkadb")
 
@@ -91,6 +100,9 @@ position = Vector2(71, 293)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D6" unique_id=93801389]
 position = Vector2(67, -418)
+=======
+position = Vector2(105, -394)
+>>>>>>> Stashed changes
 shape = SubResource("CircleShape2D_hkadb")
 
 [node name="Area2D7" type="Area2D" parent="Strokes" unique_id=929512837]
@@ -111,7 +123,11 @@ shape = SubResource("CircleShape2D_hkadb")
 position = Vector2(6, 379)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Strokes/Area2D9" unique_id=675267300]
+<<<<<<< Updated upstream
 position = Vector2(67, -418)
+=======
+position = Vector2(-19, -360)
+>>>>>>> Stashed changes
 shape = SubResource("CircleShape2D_hkadb")
 
 [node name="Area2D10" type="Area2D" parent="Strokes" unique_id=1978381215]
