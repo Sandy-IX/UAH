@@ -330,28 +330,34 @@ flip_h = true
 unique_name_in_owner = true
 position = Vector2(0, -296)
 position_smoothing_enabled = true
-position_smoothing_speed = 12.0
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.3
+drag_bottom_margin = 0.3
 
 [node name="Sword" type="Node2D" parent="." unique_id=1053895348]
 
-[node name="SwordRight" type="Area2D" parent="Sword" unique_id=2031113320 groups=["PlayerSword"]]
+[node name="BasicStance" type="Node2D" parent="Sword" unique_id=1676893548]
+
+[node name="SwordRight" type="Area2D" parent="Sword/BasicStance" unique_id=2031113320 groups=["PlayerSword"]]
 collision_layer = 4
 collision_mask = 40
 
-[node name="SwordRightCollider" type="CollisionShape2D" parent="Sword/SwordRight" unique_id=525923662]
+[node name="SwordRightCollider" type="CollisionShape2D" parent="Sword/BasicStance/SwordRight" unique_id=525923662]
 position = Vector2(75.5, -68.5)
 shape = SubResource("RectangleShape2D_q3j44")
 disabled = true
 
-[node name="SwordLeft" type="Area2D" parent="Sword" unique_id=1510795946 groups=["PlayerSword"]]
+[node name="SwordLeft" type="Area2D" parent="Sword/BasicStance" unique_id=1510795946 groups=["PlayerSword"]]
 collision_layer = 4
 collision_mask = 40
 
-[node name="SwordLeftCollider" type="CollisionShape2D" parent="Sword/SwordLeft" unique_id=411195159]
+[node name="SwordLeftCollider" type="CollisionShape2D" parent="Sword/BasicStance/SwordLeft" unique_id=411195159]
 position = Vector2(-75.5, -68.5)
 shape = SubResource("RectangleShape2D_25bnt")
 disabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Sword/SwordRight" to="." method="_on_sword_right_body_entered"]
-[connection signal="body_entered" from="Sword/SwordLeft" to="." method="_on_sword_left_body_entered"]
+[connection signal="body_entered" from="Sword/BasicStance/SwordRight" to="." method="_on_sword_right_body_entered"]
+[connection signal="body_entered" from="Sword/BasicStance/SwordLeft" to="." method="_on_sword_left_body_entered"]

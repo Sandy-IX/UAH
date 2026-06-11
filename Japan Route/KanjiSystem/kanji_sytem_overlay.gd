@@ -6,7 +6,7 @@ extends CanvasLayer
 var _pressed: bool = false
 var current_line: Line2D = null
 var strokes_hit: Array = []
-
+@export var kanji_strokes = 8
 signal kanji_state_changed(is_active: bool)
 
 func _ready() -> void:
@@ -17,7 +17,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 
-	if not visible: return
+	if not visible: 
+		reset_kanji()
+		return
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -25,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if _pressed:
 				current_line = Line2D.new()
 				current_line.default_color = Color.BLACK
-				current_line.width = 64
+				current_line.width = 80
 				pen.add_child(current_line)
 				current_line.add_point(event.position)
 			else:
@@ -39,7 +41,7 @@ func _on_stroke_entered(area: Area2D) -> void:
 	if visible and _pressed and not strokes_hit.has(area):
 		strokes_hit.append(area)
 		area.modulate = Color.GREEN
-		if strokes_hit.size() >= 14:
+		if strokes_hit.size() >= kanji_strokes:
 			_on_kanji_success()
 
 func _on_kanji_success():

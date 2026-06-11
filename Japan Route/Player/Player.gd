@@ -6,33 +6,34 @@ enum STATES {idle, walk, normal_attack, parry, jump, fall, dash,kanji_sequence}
 var hp: int = 5
 var max_hp: int = 5
 var attack_damage: float = 1.0
-@export var knock_back_strength: float = 67.0 * 12.0 
+@export var knock_back_strength: float = 67
 #endregion
 
 #region Onready Variables
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sword_right: Area2D = $Sword/SwordRight
-@onready var sword_right_collider: CollisionShape2D = $Sword/SwordRight/SwordRightCollider
-@onready var sword_left: Area2D = $Sword/SwordLeft
-@onready var sword_left_collider: CollisionShape2D = $Sword/SwordLeft/SwordLeftCollider
+@onready var sword_right: Area2D = $Sword/BasicStance/SwordRight
+@onready var sword_right_collider: CollisionShape2D = $Sword/BasicStance/SwordRight/SwordRightCollider
+@onready var sword_left: Area2D = $Sword/BasicStance/SwordLeft
+@onready var sword_left_collider: CollisionShape2D = $Sword/BasicStance/SwordLeft/SwordLeftCollider
 @onready var kanji_sytem_overlay: CanvasLayer = $"../KanjiSytemOverlay"
-@onready var main_collider = sword_right_collider
-@onready var not_main_collider = sword_left_collider
+
+@onready var basic_stance: Node2D = $Sword/BasicStance
 #endregion
 
 #region Constants (Calibrated for 1080p)
 const SPEED = 650.0
 const JUMP_VELOCITY = -1800.0
 const DECELERATION = 67.0 * 200.0
+const kb_decel = 10000.0
 const jump_gravity = 4000.0
 const fall_gravity_multiplier = 1.5 
 const max_coyote_time = 0.15
 const max_input_buffer = 0.15
-const jump_cut_off = 2.5
+const jump_cut_off = 1.67 * 6.7
 const DASH_SPEED = 2000.0   
 const DASH_DURATION = 0.25
 const dash_cooldown = 3.0 
-var knockback_duration = 250.0
+var knockback_duration = 0.25
 #endregion
 
 #region timers
@@ -49,6 +50,9 @@ var old_direction: float = 1.0
 var can_dash = true
 var attack_counter = 1
 var just_collided = false
+@onready var main_collider = sword_right_collider
+@onready var not_main_collider = sword_left_collider
+@onready var current_stance = basic_stance
 #endregion
 
 func _ready() -> void:
@@ -94,14 +98,14 @@ func _physics_process(delta: float) -> void:
 	if just_collided:
 		knockback_timer -= delta
 		if knockback_timer <= 0.0:
-			velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
+			velocity.x = move_toward(velocity.x, 0, 50000 * delta)
 			if velocity.x == 0:
 				knockback_timer = 0.0
 				
 	if not just_collided:
 		knockback_timer -= delta
 		if knockback_timer <= 0.0:
-			velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
+			velocity.x = move_toward(velocity.x, 0, kb_decel * delta)
 			if velocity.x == 0:
 				knockback_timer = 0.0
 				
@@ -230,10 +234,11 @@ func handle_attack(delta: float):
 
 	if is_on_floor():
 		if not just_collided:
-			velocity.x = old_direction * knockback_duration * 3
+			velocity.x = old_direction * knockback_duration * 1.2
 		else:
-			velocity.x = -old_direction * knock_back_strength * .67
-			
+
+			if abs(velocity.x) < 50:
+				velocity.x = -old_direction * (knock_back_strength / 0.67)
 	if not is_on_floor():
 		velocity.y += fall_gravity_multiplier * jump_gravity * delta
 		velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
@@ -242,11 +247,18 @@ func handle_attack(delta: float):
 func _on_kanji_toggled(is_active: bool) -> void:
 	if is_active:
 		Engine.time_scale = 0.25
-		current_state = STATES.kanji_sequence # Explicitly set this
+		current_state = STATES.kanji_sequence 
 	else:
 		Engine.time_scale = 1.0
-
 		current_state = STATES.idle
+		
+		# TRIGGER THE STANCE CHANGE HERE:
+		# Since is_active is false, it means the player successfully finished drawing.
+		_on_kanji_success_stance_change()
+func _on_kanji_success_stance_change() -> void:
+	print("Stance Changed")
+	# You can add your actual mechanics here later (like changing your sprite style, 
+	# modifying attack_damage, or giving access to new slash combos!)
 #endregion
 #region signal functions
 func _on_animated_sprite_2d_animation_finished() -> void:
