@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b6dp6emaqmslk"]
+
+[sub_resource type="Gradient" id="Gradient_34f75"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_to881"]
+gradient = SubResource("Gradient_34f75")
+use_hdr = true
+
+[node name="GodRay" type="Node2D" unique_id=1137607810]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1295528698]
+position = Vector2(44.000008, 374.99997)
+scale = Vector2(3.0625002, 12.718749)
+energy = 5.0
+texture = SubResource("GradientTexture2D_to881")
