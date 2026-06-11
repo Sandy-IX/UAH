@@ -457,7 +457,6 @@ flip_h = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1392658551]
 unique_name_in_owner = true
 position = Vector2(0, -296)
-position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true

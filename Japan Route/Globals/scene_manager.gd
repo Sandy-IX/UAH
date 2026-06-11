@@ -14,7 +14,7 @@ func _ready():
 func fade_screen(from :Vector2, to: Vector2) -> Signal:
 	fade.position = from
 	var tween: Tween = create_tween()
-	tween.tween_property(fade, "position",to,0.2)
+	tween.tween_property(fade, "position",to,0.5)
 	return tween.finished
 
 func transition_scene(new_scene: String, target_area: String,player_offset: Vector2,dir: String):

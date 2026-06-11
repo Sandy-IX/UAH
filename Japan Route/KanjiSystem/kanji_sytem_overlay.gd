@@ -13,10 +13,13 @@ var kanji_cooldown := 120.0
 var kanji_cooldown_timer := 0.0
 
 func _ready() -> void:
+	if get_tree().get_first_node_in_group("Kanji") != self:
+		self.queue_free()
 	visible = false 
 	for child in strokes_parent.get_children():
 		if child is Area2D:
 			child.mouse_entered.connect(_on_stroke_entered.bind(child))
+	self.call_deferred("reparent",get_tree().root)
 func _process(delta: float) -> void:
 	if not can_use_kanji:
 		kanji_cooldown_timer -= delta
