@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bpwjuwhw47rj"]
+
+[ext_resource type="PackedScene" uid="uid://droasapsbx2ae" path="res://Japan Route/Player/Player.tscn" id="1_n8k30"]
+[ext_resource type="PackedScene" uid="uid://ckfwgc6n0x1ht" path="res://Testing/breakableBarrel.tscn" id="2_2msf0"]
+[ext_resource type="PackedScene" uid="uid://b1fnxombiaiqs" path="res://Japan Route/KanjiSystem/KanjiSytemOverlay.tscn" id="3_pxnkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2msf0"]
+size = Vector2(4516, 40)
+
+[node name="Playground" type="Node2D" unique_id=2057993469]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=581401493]
+offset_left = -1808.0
+offset_right = 2700.0
+offset_bottom = 40.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect" unique_id=1239917640]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/StaticBody2D" unique_id=2085264346]
+position = Vector2(2258, 20)
+shape = SubResource("RectangleShape2D_2msf0")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1410099356]
+offset_left = 517.0
+offset_top = -415.0
+offset_right = 5025.0
+offset_bottom = -375.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect2" unique_id=1045330389]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/StaticBody2D" unique_id=504504053]
+position = Vector2(2258, 20)
+shape = SubResource("RectangleShape2D_2msf0")
+one_way_collision = true
+
+[node name="Player" parent="." unique_id=1711489228 instance=ExtResource("1_n8k30")]
+position = Vector2(74, -6)
+
+[node name="Barrel" parent="." unique_id=1949679277 instance=ExtResource("2_2msf0")]
+position = Vector2(529, 0)
+
+[node name="KanjiSytemOverlay" parent="." unique_id=807449397 instance=ExtResource("3_pxnkf")]
