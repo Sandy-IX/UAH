@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b1ah83jfk5853"]
+
+[ext_resource type="Script" uid="uid://e3w2llyg0kg6" path="res://Japan Route/General/LevelTransition/level_transition.gd" id="1_at164"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qjo8"]
+size = Vector2(32, 32)
+
+[node name="LevelTransition" type="Node2D" unique_id=1831052879]
+script = ExtResource("1_at164")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=592313943]
+scale = Vector2(-1, 2)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1316794502]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_0qjo8")
+debug_color = Color(0.9258115, 4.3028893e-05, 0.6767467, 0.41960785)

@@ -113,7 +113,7 @@ damping_max = 800.00006
 scale_max = 6.0
 color_ramp = SubResource("GradientTexture1D_hsimj")
 
-[node name="Barrel" type="StaticBody2D" unique_id=1694760226 groups=["BreakableObjects"]]
+[node name="Barrel" type="StaticBody2D" unique_id=1694760226 groups=["BreakableObjects", "EnemyDamage"]]
 collision_layer = 32
 collision_mask = 6
 script = ExtResource("1_5scuh")
@@ -125,7 +125,7 @@ scale = Vector2(3.96875, 3.9375)
 sprite_frames = SubResource("SpriteFrames_ojbqj")
 animation = &"Destroy"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2142666414]
+[node name="Area2D" type="Area2D" parent="." unique_id=2142666414 groups=["EnemyDamage"]]
 collision_layer = 32
 collision_mask = 4
 

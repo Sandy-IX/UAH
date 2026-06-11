@@ -12,9 +12,14 @@ config_version=5
 
 config/name="Under All Heaven"
 config/version="1.0"
-run/main_scene="uid://bpwjuwhw47rj"
+run/main_scene="uid://dxdoqxi1o3eb6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.09019608, 0, 0.44313726, 0)
+
+[autoload]
+
+GlobalSignalManager="*uid://cl6aiiypiulxr"
+SceneManager="*uid://dsawpk2bu13r7"
 
 [display]
 
@@ -27,6 +32,8 @@ window/vsync/vsync_mode=0
 
 PlayerSword=""
 BreakableObjects=""
+EnemyDamage=""
+Player=""
 
 [input]
 
@@ -83,6 +90,7 @@ storm_kanji_toggle={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 

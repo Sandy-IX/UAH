@@ -8,15 +8,23 @@ var current_line: Line2D = null
 var strokes_hit: Array = []
 @export var kanji_strokes = 8
 signal kanji_state_changed(is_active: bool)
+var can_use_kanji := true
+var kanji_cooldown := 120.0
+var kanji_cooldown_timer := 0.0
 
 func _ready() -> void:
 	visible = false 
 	for child in strokes_parent.get_children():
 		if child is Area2D:
 			child.mouse_entered.connect(_on_stroke_entered.bind(child))
+func _process(delta: float) -> void:
+	if not can_use_kanji:
+		kanji_cooldown_timer -= delta
 
+		if kanji_cooldown_timer <= 0.0:
+			can_use_kanji = true
+			kanji_cooldown_timer = 0.0
 func _unhandled_input(event: InputEvent) -> void:
-
 	if not visible: 
 		reset_kanji()
 		return
@@ -33,9 +41,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				current_line = null
 				
-	elif event is InputEventMouseMotion and _pressed and current_line:
-		current_line.add_point(event.position)
-	
+	elif event is InputEventMouseMotion and current_line:
+		_pressed = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+		if _pressed:
+			current_line.add_point(event.position)
 
 func _on_stroke_entered(area: Area2D) -> void:
 	if visible and _pressed and not strokes_hit.has(area):
@@ -46,7 +55,11 @@ func _on_stroke_entered(area: Area2D) -> void:
 
 func _on_kanji_success():
 	visible = false
-	kanji_state_changed.emit(false) 
+	kanji_state_changed.emit(false)
+
+	can_use_kanji = false
+	kanji_cooldown_timer = kanji_cooldown
+
 	reset_kanji()
 	print("Kanji Complete!")
 func reset_kanji():

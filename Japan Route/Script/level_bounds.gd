@@ -17,21 +17,22 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 		
-	var camera: Camera2D = null
-	while not camera:
-		await get_tree().process_frame
-		camera = get_viewport().get_camera_2d()
-	
-	# Wait one more frame for the camera to successfully position itself 
-	# over the player before locking down the borders.
-	await get_tree().process_frame
+	# Instead of looping and waiting, grab the active camera directly 
+	# after the scene tree finishes organizing itself on frame 1.
+	_set_camera_limits.call_deferred()
 
-	# Prevent a 0-width limit from snapping the camera to the corner
-	if width > 0 and height > 0:
+func _set_camera_limits() -> void:
+	var camera: Camera2D = get_viewport().get_camera_2d()
+	
+	if camera and width > 0 and height > 0:
 		camera.limit_left = int(global_position.x)
 		camera.limit_top = int(global_position.y)
 		camera.limit_right = int(global_position.x) + width
 		camera.limit_bottom = int(global_position.y) + height
+		
+		# Optional: Force the camera to respect the new limits immediately
+		camera.reset_smoothing() 
+
 func _draw():
 	if Engine.is_editor_hint():
 		var r: Rect2 = Rect2(Vector2.ZERO, Vector2(width, height))
