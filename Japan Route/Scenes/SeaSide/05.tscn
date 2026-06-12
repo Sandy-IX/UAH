@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b4bjt6nn4xnm"]
+
+[ext_resource type="PackedScene" uid="uid://btiksbhv0kbe5" path="res://Japan Route/Globals/TileSet.tscn" id="1_prvtw"]
+
+[node name="05" type="Node2D" unique_id=693109715]
+
+[node name="TileMapLayer" parent="." unique_id=1279345347 instance=ExtResource("1_prvtw")]
+tile_map_data = PackedByteArray(0, 0, 16, 0, 0, 0, 0, 0, 5, 0, 2, 0, 0, 0)

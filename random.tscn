@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://r1uityi7b5tf"]
+
+[ext_resource type="Texture2D" uid="uid://b824ntyntsmoc" path="res://Testing/Player/HURT.png" id="1_2e35y"]
+[ext_resource type="Texture2D" uid="uid://dtq2b4tplvcex" path="res://Testing/Player/ATTACK 3.png" id="2_2truy"]
+[ext_resource type="PackedScene" uid="uid://droasapsbx2ae" path="res://Japan Route/Player/Player.tscn" id="3_y7kcf"]
+[ext_resource type="PackedScene" uid="uid://b1fnxombiaiqs" path="res://Japan Route/KanjiSystem/KanjiSytemOverlay.tscn" id="4_uj8a0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8emh6"]
+
+[node name="random" type="Node2D" unique_id=1118873242]
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=61631141]
+scroll_scale = Vector2(0.6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1187751048]
+position = Vector2(220, 4)
+texture = ExtResource("2_2truy")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=202495306]
+scroll_scale = Vector2(0.8, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=105762244]
+position = Vector2(167, 4)
+texture = ExtResource("1_2e35y")
+
+[node name="Player" parent="." unique_id=1711489228 instance=ExtResource("3_y7kcf")]
+
+[node name="KanjiSytemOverlay" parent="." unique_id=807449397 instance=ExtResource("4_uj8a0")]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1440180400]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1281684400]
+position = Vector2(70, 245)
+shape = SubResource("WorldBoundaryShape2D_8emh6")

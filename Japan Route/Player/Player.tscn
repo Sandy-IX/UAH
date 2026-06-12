@@ -11,9 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://o2j26f0bfjm" path="res://Testing/Player/WALK.png" id="6_kan4v"]
 [ext_resource type="Texture2D" uid="uid://b824ntyntsmoc" path="res://Testing/Player/HURT.png" id="7_kan4v"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_34t3d"]
-radius = 9.0
-height = 42.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2omxr"]
+size = Vector2(16, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2omxr"]
 atlas = ExtResource("2_q3j44")
@@ -432,8 +431,8 @@ size = Vector2(91, 137)
 size = Vector2(91, 137)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31c41"]
-radius = 43.0
-height = 174.0
+radius = 31.0
+height = 130.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1711489228 groups=["Player"]]
 collision_layer = 2
@@ -441,9 +440,9 @@ collision_mask = 41
 script = ExtResource("1_e73mh")
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="." unique_id=661482025]
-position = Vector2(0, -83)
+position = Vector2(1, -67)
 scale = Vector2(4, 4)
-shape = SubResource("CapsuleShape2D_34t3d")
+shape = SubResource("RectangleShape2D_2omxr")
 debug_color = Color(0.99607843, 0, 0.18431373, 0.16862746)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2015355902]
@@ -456,7 +455,7 @@ flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1392658551]
 unique_name_in_owner = true
-position = Vector2(0, -296)
+position = Vector2(0, -300)
 position_smoothing_speed = 15.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -490,7 +489,7 @@ collision_layer = 2
 collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Damage_Area" unique_id=2142749661]
-position = Vector2(1, -87)
+position = Vector2(1, -63)
 shape = SubResource("CapsuleShape2D_31c41")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
