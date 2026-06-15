@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b1q0p1e2513fs"]
+
+[ext_resource type="Script" uid="uid://dmap8a34cxhp7" path="res://Japan Route/General/spikes.gd" id="1_hn2cn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfsak"]
+
+[node name="Spikes" type="Area2D" unique_id=1840662629 groups=["EnemyDamage"]]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_hn2cn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038216213]
+shape = SubResource("RectangleShape2D_xfsak")
+debug_color = Color(0.7231089, 0, 0.027756523, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=33894525]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.96333283, 0, 0.15992168, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -10,9 +10,23 @@
 [ext_resource type="Texture2D" uid="uid://v08cqf3umyuk" path="res://Testing/Player/DEATH.png" id="6_2omxr"]
 [ext_resource type="Texture2D" uid="uid://o2j26f0bfjm" path="res://Testing/Player/WALK.png" id="6_kan4v"]
 [ext_resource type="Texture2D" uid="uid://b824ntyntsmoc" path="res://Testing/Player/HURT.png" id="7_kan4v"]
+[ext_resource type="Script" uid="uid://8upfqur6qc22" path="res://Japan Route/Player/player_stat_manager.gd" id="11_a4y7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2omxr"]
-size = Vector2(16, 34)
+size = Vector2(10.75, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3j44"]
+size = Vector2(91, 137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25bnt"]
+size = Vector2(91, 137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4y7d"]
+size = Vector2(126, 45)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31c41"]
+radius = 31.0
+height = 130.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2omxr"]
 atlas = ExtResource("2_q3j44")
@@ -424,39 +438,20 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3j44"]
-size = Vector2(91, 137)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_25bnt"]
-size = Vector2(91, 137)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31c41"]
-radius = 31.0
-height = 130.0
-
 [node name="Player" type="CharacterBody2D" unique_id=1711489228 groups=["Player"]]
 collision_layer = 2
 collision_mask = 41
 script = ExtResource("1_e73mh")
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="." unique_id=661482025]
-position = Vector2(1, -67)
+position = Vector2(1.5, -59)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_2omxr")
 debug_color = Color(0.99607843, 0, 0.18431373, 0.16862746)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2015355902]
-position = Vector2(5, -76)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_kan4v")
-animation = &"death"
-autoplay = "idle"
-flip_h = true
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1392658551]
 unique_name_in_owner = true
-position = Vector2(0, -300)
-position_smoothing_speed = 15.0
+position = Vector2(0, -108)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.3
@@ -466,34 +461,73 @@ drag_bottom_margin = 0.3
 
 [node name="BasicStance" type="Node2D" parent="Sword" unique_id=1676893548]
 
-[node name="SwordRight" type="Area2D" parent="Sword/BasicStance" unique_id=2031113320 groups=["PlayerSword"]]
+[node name="RightSide" type="Node2D" parent="Sword/BasicStance" unique_id=362852160]
+
+[node name="SwordRightB" type="Area2D" parent="Sword/BasicStance/RightSide" unique_id=2031113320 groups=["PlayerSword"]]
 collision_layer = 4
 collision_mask = 40
 
-[node name="SwordRightCollider" type="CollisionShape2D" parent="Sword/BasicStance/SwordRight" unique_id=525923662]
-position = Vector2(75.5, -68.5)
+[node name="SwordRightColliderB" type="CollisionShape2D" parent="Sword/BasicStance/RightSide/SwordRightB" unique_id=525923662]
+position = Vector2(82, -69)
 shape = SubResource("RectangleShape2D_q3j44")
 disabled = true
 
-[node name="SwordLeft" type="Area2D" parent="Sword/BasicStance" unique_id=1510795946 groups=["PlayerSword"]]
+[node name="LeftSide" type="Node2D" parent="Sword/BasicStance" unique_id=46268474]
+
+[node name="SwordLeftB" type="Area2D" parent="Sword/BasicStance/LeftSide" unique_id=1510795946 groups=["PlayerSword"]]
 collision_layer = 4
 collision_mask = 40
 
-[node name="SwordLeftCollider" type="CollisionShape2D" parent="Sword/BasicStance/SwordLeft" unique_id=411195159]
+[node name="SwordLeftColliderB" type="CollisionShape2D" parent="Sword/BasicStance/LeftSide/SwordLeftB" unique_id=411195159]
 position = Vector2(-75.5, -68.5)
 shape = SubResource("RectangleShape2D_25bnt")
 disabled = true
 
+[node name="Storm Stance" type="Node2D" parent="Sword" unique_id=872850361]
+
+[node name="RightSide" type="Node2D" parent="Sword/Storm Stance" unique_id=1042109198]
+
+[node name="SwordRightS" type="Area2D" parent="Sword/Storm Stance/RightSide" unique_id=346103651 groups=["PlayerSword"]]
+collision_layer = 4
+collision_mask = 40
+
+[node name="SwordRightColliderS" type="CollisionShape2D" parent="Sword/Storm Stance/RightSide/SwordRightS" unique_id=518243162]
+position = Vector2(97, -68.5)
+shape = SubResource("RectangleShape2D_a4y7d")
+disabled = true
+
+[node name="LeftSide" type="Node2D" parent="Sword/Storm Stance" unique_id=396569156]
+
+[node name="SwordLeftS" type="Area2D" parent="Sword/Storm Stance/LeftSide" unique_id=1958455242 groups=["PlayerSword"]]
+collision_layer = 4
+collision_mask = 40
+
+[node name="SwordLeftColliderS" type="CollisionShape2D" parent="Sword/Storm Stance/LeftSide/SwordLeftS" unique_id=443804062]
+position = Vector2(-90, -69)
+shape = SubResource("RectangleShape2D_a4y7d")
+disabled = true
+
 [node name="Player_Damage_Area" type="Area2D" parent="." unique_id=2136729150]
 collision_layer = 2
-collision_mask = 40
+collision_mask = 168
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Damage_Area" unique_id=2142749661]
 position = Vector2(1, -63)
 shape = SubResource("CapsuleShape2D_31c41")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Sword/BasicStance/SwordRight" to="." method="_on_sword_right_body_entered"]
-[connection signal="body_entered" from="Sword/BasicStance/SwordLeft" to="." method="_on_sword_left_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2015355902]
+position = Vector2(5, -76)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kan4v")
+animation = &"death"
+autoplay = "idle"
+flip_h = true
+
+[node name="PlayerStatManager" type="Node" parent="." unique_id=1928210533]
+script = ExtResource("11_a4y7d")
+
+[connection signal="body_entered" from="Sword/BasicStance/RightSide/SwordRightB" to="." method="_on_sword_right_body_entered"]
+[connection signal="body_entered" from="Sword/BasicStance/LeftSide/SwordLeftB" to="." method="_on_sword_left_body_entered"]
 [connection signal="area_entered" from="Player_Damage_Area" to="." method="_on_player_damage_area_area_entered"]
 [connection signal="body_entered" from="Player_Damage_Area" to="." method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

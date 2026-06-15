@@ -25,8 +25,10 @@ func transition_scene(new_scene: String, target_area: String,player_offset: Vect
 	load_scene_started.emit()
 	
 	fade_screen(fade_pos,Vector2.ZERO)
-	
+
 	get_tree().call_deferred("change_scene_to_file", new_scene)	
+
+
 	await get_tree().scene_changed
 	
 	new_scene_ready.emit(target_area, player_offset)

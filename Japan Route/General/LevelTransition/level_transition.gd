@@ -74,9 +74,9 @@ func get_offset(player: Node2D) -> Vector2:
 	else:
 		offset.x = player_pos.x - global_position.x
 		if location == SIDE.TOP:
-			offset.y = 196
+			offset.y = -167
 		else:
-			offset.y = -196
+			offset.y = 167
 
 	return offset
 func get_transition_direction()-> String:

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://droasapsbx2ae" path="res://Japan Route/Player/Player.tscn" id="2_sqmsw"]
 [ext_resource type="PackedScene" uid="uid://b1fnxombiaiqs" path="res://Japan Route/KanjiSystem/KanjiSytemOverlay.tscn" id="3_5i370"]
 [ext_resource type="Script" uid="uid://bqhq6t5o1qmsc" path="res://Japan Route/Script/level_bounds.gd" id="4_sqmsw"]
+[ext_resource type="PackedScene" uid="uid://b1ah83jfk5853" path="res://Japan Route/General/LevelTransition/LevelTransition.tscn" id="5_5i370"]
 
 [node name="04" type="Node2D" unique_id=1619897777]
 
@@ -23,3 +24,9 @@ script = ExtResource("4_sqmsw")
 width = 2080
 height = 5696
 metadata/_custom_type_script = "uid://bqhq6t5o1qmsc"
+
+[node name="LevelTransition" parent="." unique_id=1831052879 instance=ExtResource("5_5i370")]
+position = Vector2(99, 2)
+size = 10
+target_scene = "uid://bewh76b0dsue4"
+target_area = "LevelTransition2"

@@ -17,20 +17,27 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 		
-	# Instead of looping and waiting, grab the active camera directly 
-	# after the scene tree finishes organizing itself on frame 1.
 	_set_camera_limits.call_deferred()
 
 func _set_camera_limits() -> void:
 	var camera: Camera2D = get_viewport().get_camera_2d()
 	
 	if camera and width > 0 and height > 0:
-		camera.limit_left = int(global_position.x)
-		camera.limit_top = int(global_position.y)
-		camera.limit_right = int(global_position.x) + width
-		camera.limit_bottom = int(global_position.y) + height
+		var current_scene = get_tree().current_scene
+		var target_position = global_position
 		
-		# Optional: Force the camera to respect the new limits immediately
+		if current_scene and current_scene != get_parent():
+			var spawn_point = current_scene.find_child("SpawnPoint", true, false)
+			if spawn_point:
+				target_position = spawn_point.global_position - Vector2(width / 2.0, height / 2.0)
+			else:
+				target_position = Vector2.ZERO
+
+		camera.limit_left = int(target_position.x)
+		camera.limit_top = int(target_position.y)
+		camera.limit_right = int(target_position.x) + width
+		camera.limit_bottom = int(target_position.y) + height
+		
 		camera.reset_smoothing() 
 
 func _draw():
