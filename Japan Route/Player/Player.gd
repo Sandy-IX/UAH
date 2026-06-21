@@ -5,7 +5,7 @@ class_name Player
 enum STATES {idle, walk, normal_attack, parry, jump, fall, dash, kanji_sequence, hurt, death}
 var stance: Node2D = basic_stance
 @export var knock_back_strength: float = 140
-var amount = 1
+var amount = 2
 #endregion
 
 #region Onready Variables
